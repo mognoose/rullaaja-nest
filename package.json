@@ -1,8 +1,8 @@
 {
-  "name": "nest-typescript-starter",
+  "name": "rullaaja",
   "private": true,
-  "version": "1.0.0",
-  "description": "Nest TypeScript starter repository",
+  "version": "3.0.0",
+  "description": "Rullaaja RPG dice",
   "license": "MIT",
   "scripts": {
     "build": "nest build",
