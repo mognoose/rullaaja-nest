@@ -6,6 +6,11 @@ import { roll } from './roll.dto';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Get()
+  getHello(): String {
+    return "Rullaaja 3.0";
+  }
+
   @Post('api/roll')
   roll(@Body() roll: roll): Object {
     return this.appService.roll(roll);
