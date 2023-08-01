@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Req } from '@nestjs/common';
 import { AppService } from './app.service';
-import { roll } from './roll.dto';
+import { Roll } from './roll.dto';
 
 @Controller()
 export class AppController {
@@ -12,7 +12,7 @@ export class AppController {
   }
 
   @Post('api/roll')
-  roll(@Body() roll: roll): Object {
+  roll(@Body() roll: Roll): Object {
     return this.appService.roll(roll);
   }
 }
