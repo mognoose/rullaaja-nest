@@ -13,7 +13,7 @@ export class AppService {
     const lang = roll.lang || 'fi';
 
     const result = Math.floor(Math.random() * dice) + 1;
-    
+
     const messages = {
       fi: `${user} heitti D${dice} nopalla: ${result}`,
       en: `${user} rolled D${dice} dice with ${result} as result`,
@@ -23,7 +23,13 @@ export class AppService {
     const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
     const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
     client.login(process.env.TOKEN);
-    
+
+    client.on('ready', async () => {
+      const channel:TextChannel = await client.channels.fetch(channelid) as TextChannel;
+      if(!hidden) channel.send(message);
+    });
+
+        
     (async () => {
       try {
           console.log('Started refreshing application (/) commands.');
@@ -35,11 +41,6 @@ export class AppService {
           console.error(error);
       }
     })();
-
-    client.on('ready', async () => {
-      const channel:TextChannel = await client.channels.fetch(channelid) as TextChannel;
-      if(!hidden) channel.send(message);
-    });
     
     return { dice, result };
   }
