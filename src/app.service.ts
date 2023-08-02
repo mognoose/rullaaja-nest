@@ -37,17 +37,7 @@ export class AppService {
           console.log(error);
           
         }
-      }
-
-      try {
-        console.log('Started refreshing application (/) commands.');
-    
-        await rest.put(Routes.applicationCommands(process.env.APPID), { body: commands });
-    
-        console.log('Successfully reloaded application (/) commands.');
-      } catch (error) {
-          console.error(error);
-      }
+      }      
     });
     
     return { dice, result };
