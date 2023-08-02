@@ -26,7 +26,18 @@ export class AppService {
 
     client.on('ready', async () => {
       const channel:TextChannel = await client.channels.fetch(channelid) as TextChannel;
-      if(!hidden) channel.send(message);
+      if(!hidden) {
+        console.log('Roll is public. Announcing...');
+        
+        try {
+          await channel.send(message);
+          console.log('Announced message:', message);
+          
+        } catch (error) {
+          console.log(error);
+          
+        }
+      }
     });
 
         
